@@ -142,6 +142,7 @@ function actualizarDatos(){
   var db = firebase.firestore();
   var TerrenosRef = db.collection("Terrenos").doc("FCVz4y2BrbJXpOf6ZpYa");
   if(dineroAPagar<=precio){
+    alert("Se realizo el pago por la cantidad de:" + dineroAPagar);
     var NuevoPrecio = precio - dineroAPagar;
     // Set the "capital" field of the city 'DC'
     return TerrenosRef.update({

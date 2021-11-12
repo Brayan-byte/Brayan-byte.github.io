@@ -13,6 +13,8 @@ var terrenoID;
 const buy_button = document.getElementById("Buy");
 buy_button.addEventListener('click',buy_terrain);
 
+const cita_button = document.getElementById("Cita");
+cita_button.addEventListener('click', apartarcita);
 
 window.onload = async function(){
   verAutenticacion();
@@ -91,9 +93,16 @@ function getFirestore(){
 
 function button_id(){
   terrainid = this.id;
-  console.log(terrainid);
+  alert("Terreno Seleccionado!");
 }
 
+function apartarcita(){
+  var date = new Date();
+  var day = date.getDate()+2;
+  var month = date.getMonth()+1;
+  var year = date.getFullYear();
+  alert("Tu cita esta lista para la sig fecha: "+ day + "/" + month + "/" + year );
+}
 function buy_terrain(){
 
   alert("Terreno comprado exitosamente, acerquese a oficinas para un asesoramiento");
