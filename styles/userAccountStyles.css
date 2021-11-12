@@ -10,6 +10,8 @@
 html{
   font-size: 62.5% !important;
   font-family: 'Gemunu Libre', sans-serif !important;
+  overflow-y: scroll;
+  
 }
 header{
   text-align: center;
@@ -23,10 +25,13 @@ h1{
 
 main{
   width: 100%;
+  min-height: 620px;
   margin-top: 45px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: auto;
+  
 }
 .terrenos_comprados{
   width: 70%;

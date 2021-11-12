@@ -10,13 +10,16 @@
 html{
   font-family: 'Gemunu Libre', sans-serif;
   font-size: 62.5%;
+  overflow-y: auto;
 }
 header{
   margin: 7.5rem 0 3.5rem;
   text-align: center;
   font-size: 1.8rem;
 }
-
+main{
+  min-height: 620px;
+}
 .user_data_deplay_container{
   width: 100%;
   height: auto;

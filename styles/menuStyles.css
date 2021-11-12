@@ -14,12 +14,14 @@ html{
 main{
   margin-top: 50px;
   width: 100%;
-  display: flex;
-  justify-content: center;
+  min-height: 620px;
+  overflow-y: scroll;
 }
 section{
   width: 80%;
   display: flex;
+  position: relative;
+  margin: 0 auto;
   flex-direction: column;
   justify-content: center;
   align-content: center;

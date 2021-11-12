@@ -17,7 +17,9 @@ let abonoMensual;
 let valorTotalCuenta;
 
 var button_pay = document.getElementById("abonar");
+
 button_pay.addEventListener('click',pagar);
+
 window.onload = async function(){
   verAutenticacion();
 
@@ -27,7 +29,9 @@ window.onload = async function(){
   console.log(userId);
   fechaDePago();
   renderPrice();
-
+  if(precio == 0 ){
+    alert("CUENTA LIQUIDADA");
+  }
 }
 
 function fechaDePago(){
@@ -58,17 +62,18 @@ function pagar(){
   {
   // do whatever you want with the checked radio
    caso = option[i].value;
-
   // only one radio can be logically checked, don't check the rest
    break;
   }
   }
+  console.log(caso);
   if(caso === '1'){
     dineroAPagar = abonoMensual;
-    alert("entre");
+    actualizarDatos();
   }
-  if(caso=== '2' ){
+  if(caso === '2' ){
     dineroAPagar = valorTotalCuenta;
+    actualizarDatos();
   }
   if(caso === '3'){
     const input_value = document.getElementById("input_number");
@@ -79,12 +84,13 @@ function pagar(){
     else{
       dineroAPagar = ValorCustom;
       console.log(dineroAPagar);
+      actualizarDatos();
     }
 
   }
-  actualizarDatos();
+  
   }
-  alert("CUENTA LIQUIDADA");
+
 }
 
 function renderTerrain(datos){
@@ -135,18 +141,24 @@ function getFirestore(){
 function actualizarDatos(){
   var db = firebase.firestore();
   var TerrenosRef = db.collection("Terrenos").doc("FCVz4y2BrbJXpOf6ZpYa");
-  var NuevoPrecio = precio - dineroAPagar;
-// Set the "capital" field of the city 'DC'
-return TerrenosRef.update({
-    Precio: NuevoPrecio
-})
-.then(() => {
-    console.log("Document successfully updated!");
-})
-.catch((error) => {
-    // The document probably doesn't exist.
-    console.error("Error updating document: ", error);
-});
+  if(dineroAPagar<=precio){
+    var NuevoPrecio = precio - dineroAPagar;
+    // Set the "capital" field of the city 'DC'
+    return TerrenosRef.update({
+        Precio: NuevoPrecio
+    })
+    .then(() => {
+        console.log("Document successfully updated!");
+    })
+    .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+    });
+  }
+  else{
+    alert("ingrese una suma valida");
+  }
+ 
 }
 
 
